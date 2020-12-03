@@ -1,0 +1,1870 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>src.actions API documentation</title>
+<meta name="description" content="Python module that contains classes and functions used for the custom actions of Rasa" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>src.actions</code></h1>
+</header>
+<section id="section-intro">
+<p>Python module that contains classes and functions used for the custom actions of Rasa</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># This files contains your custom actions which can be used to run
+# custom Python code.
+#
+# See this guide on how to implement these action:
+# https://rasa.com/docs/rasa/custom-actions
+
+
+&#34;&#34;&#34;
+Python module that contains classes and functions used for the custom actions of Rasa
+&#34;&#34;&#34;
+from typing import Any, Text, Dict, List
+
+from rasa_sdk import Action, Tracker
+from rasa_sdk.executor import CollectingDispatcher
+from datetime import datetime, date, time, timedelta
+import requests
+import json
+import pymongo
+
+client = pymongo.MongoClient(&#34;mongodb+srv://juampi:EXAjco982@cluster0.5yjxg.mongodb.net/rasa?retryWrites=true&amp;w=majority&#34;)
+db = client.get_database(&#34;rasa&#34;)
+
+class ActionOnlineMembers(Action):
+
+        def name(self) -&gt; Text:
+                return &#34;action_online_members&#34;
+
+        def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+                coll = db.online 
+                rta = &#34;&#34;
+                for i in coll.find():      
+                        rta += &#34;{} se encuentra en {} \n&#34;.format(i[&#39;name&#39;], i[&#39;sala&#39;])
+                dispatcher.utter_message(text=rta)
+                return []
+
+
+class ActionTareasToDo(Action):
+
+        def name(self) -&gt; Text:
+                return &#34;action_tareas_to_do&#34;
+
+        def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+                coll = db.tareas
+                rta = &#34;&#34;
+                rta += &#34;Las tareas en estado to do son:\n&#34;
+                for i in coll.find({ &#34;estado&#34;: &#34;to_do&#34;}):       
+                        rta+=&#34;--Tarea: {}. Nombre {}.\n Descripcion: {}.\n Criterios de aceptacion: {}\n&#34;.format(i[&#39;id_tarea&#39;],i[&#39;nombre&#39;], i[&#39;descripcion&#39;], i[&#39;criterios de aceptacion&#39;])
+                rta += &#34;\nQuieres asignarte alguna tarea?&#34;
+                dispatcher.utter_message(text=rta)
+                return []
+
+class ActionTareasInProgress(Action):
+
+        def name(self) -&gt; Text:
+                return &#34;action_tareas_in_progress&#34;
+
+        def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+                coll = db.tareas
+                rta = &#34;&#34;
+                rta += &#34;Las tareas en estado in progress son:\n&#34;
+                for i in coll.find({&#34;estado&#34; : &#34;in_progress&#34;}):     
+                        rta+=&#34;--Tarea: {}. Nombre {}.\n Descripcion: {}.\n Criterios de aceptacion: {}\n Participantes: {}\n&#34;.format(i[&#39;id_tarea&#39;],i[&#39;nombre&#39;], i[&#39;descripcion&#39;], i[&#39;criterios de aceptacion&#39;],i[&#39;participantes&#39;])
+                dispatcher.utter_message(text=rta)
+                return []
+
+class ActionTareasDone(Action):
+
+        def name(self) -&gt; Text:
+                return &#34;action_tareas_done&#34;
+
+        def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+                coll = db.tareas
+                rta = &#34;&#34;
+                rta += &#34;Las tareas en estado done son:\n&#34;
+                for i in coll.find({&#34;estado&#34; : &#34;done&#34;}):
+                        rta+=&#34;--Tarea: {}. Nombre {}.\n Descripcion: {}.\n Criterios de aceptacion: {}\n&#34;.format(i[&#39;id_tarea&#39;],i[&#39;nombre&#39;], i[&#39;descripcion&#39;], i[&#39;criterios de aceptacion&#39;])
+                dispatcher.utter_message(text=rta)
+                return []
+
+
+class ActionOrganizacionActual(Action):
+
+        def name(self) -&gt; Text:
+                return &#34;action_organizacion_actual&#34;
+
+        def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+                coll = db.grupos
+                rta = &#34;&#34;
+                for i in coll.find():
+                        rta += &#34;--Grupo: {}. Cuyo lider es: {}&#34;.format(i[&#39;grupo&#39;], i[&#39;lider&#39;])
+                dispatcher.utter_message(text=rta)
+                return []
+
+
+class ActionMiTarea(Action):
+
+        def name(self) -&gt; Text:
+                return &#34;action_mi_tarea&#34;
+
+        def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+                coll = db.tareas
+                # dispatcher.utter_message(text=tracker.sender_id)
+                asignada = False
+                user = str((tracker.current_state())[&#34;sender_id&#34;]) #Alguna forma de obtener el id del usuario
+                for i in coll.find({&#34;estado&#34; : &#34;in_progress&#34;}):
+                        if (asignada == False):
+                                if (user in i[&#39;participantes&#39;]):
+                                        dispatcher.utter_message(text=&#34;{} tienes la tarea {} asignada para hoy.&#34;.format(user,i[&#39;nombre&#39;]))
+                                        asignada = True
+                if(asignada == False):
+                        dispatcher.utter_message(text=&#34;{} no tienes ninguna tarea asignada, debes revisar las tareas en estado to do y tomar una&#34;.format(user))
+                return []
+
+
+class ActionAsignarTarea(Action):
+
+        def name(self) -&gt; Text:
+                return &#34;action_asignar_tarea&#34;
+
+        def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+                coll = db.tareas
+                nombre= &#39;&#39;
+                descrip = &#39;&#39;
+                criterios = []
+                participantes = [str((tracker.current_state())[&#34;sender_id&#34;])]
+                if (tracker.get_slot(&#34;id_tarea&#34;) != None):
+                        id = tracker.get_slot(&#34;id_tarea&#34;)
+                        for i in coll.find({&#34;estado&#34;: &#34;to_do&#34;}):
+                                if (i[&#39;id_tarea&#39;] == id):
+                                        nombre = i[&#39;nombre&#39;]
+                                        descrip = i[&#39;descripcion&#39;]
+                                        criterios = i[&#39;criterios de aceptacion&#39;]
+                                        coll.delete_one({&#34;id_tarea&#34; : id}) ##ME QUEDE ACA TENGO QUE BORRAR E INSERTAR ABAJO
+                                        break
+                if (nombre != &#39;&#39;):
+                        coll.insert_one({
+                                &#39;id_tarea&#39;:id,
+                                &#39;nombre&#39;:nombre,
+                                &#39;descripcion&#39;:descrip,
+                                &#39;criterios de aceptacion&#39;:criterios,
+                                &#39;participantes&#39;:participantes
+                        })
+                        dispatcher.utter_message(text=&#39;La tarea con id: {} fue correctamente asignada&#39;.format(id))
+                else:
+                        dispatcher.utter_message(text=&#39;No hay una tarea con ese id&#39;)
+                return []
+
+
+
+
+class ActionNuevaReunion(Action):
+
+        def name(self) -&gt; Text:
+                return &#34;action_nueva_reunion&#34;
+
+        def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+                # dispatcher.utter_message(text=tracker.sender_id)
+                
+                hora = tracker.get_slot(&#34;horario&#34;)
+                if (hora != None):
+                        hoy = datetime.now()
+                        h = int(hora[0:hora.index(&#39;:&#39;)])
+                        m = int(hora[hora.index(&#39;:&#39;)+1:])
+                        hoy = hoy.replace(hour=h)
+                        hoy = hoy.replace(minute=m)
+                        coll = db.reuniones
+                        my_dict = my_dict = {
+                                &#39;numero&#39;: coll.count(),
+                                &#39;fecha&#39;: &#34;{}&#34;.format(hoy.strftime(&#34;%x&#34;)),
+                                &#39;horario&#39;: &#34;{}:{}&#34;.format(hoy.strftime(&#34;%H&#34;),hoy.strftime(&#34;%H&#34;))
+                                }
+                        if (tracker.get_slot(&#34;descripcion&#34;) != None):
+                                my_dict = {
+                                &#39;numero&#39;: coll.count(),
+                                &#39;fecha&#39;: &#34;{}&#34;.format(hoy.strftime(&#34;%x&#34;)),
+                                &#39;horario&#39;: &#34;{}:{}&#34;.format(hoy.strftime(&#34;%H&#34;),hoy.strftime(&#34;%H&#34;)),
+                                &#39;descripcion&#39;:tracker.get_slot(&#34;descripcion&#34;)
+                                }
+                        coll.insert_one(my_dict)
+                        dispatcher.utter_message(text=&#34;Programaste una reunion para hoy a las {}:{} hs, \nQuieres que me encargue de programarla en los proximos dias?&#34;.format(hoy.strftime(&#34;%H&#34;),hoy.strftime(&#34;%M&#34;)))
+                return []
+
+
+
+class ActionNuevoSprint(Action):
+
+        def name(self) -&gt; Text:
+                return &#34;action_nuevo_sprint&#34;
+
+        def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+                if (tracker.get_slot(&#34;fecha_fin&#34;) != None):
+                        fecha_fin = datetime.strptime(tracker.get_slot(&#34;fecha_fin&#34;), &#39;%d/%m/%Y&#39;)
+                        coll = db.sprint
+                        myquery = { &#34;estado&#34;: &#34;activo&#34; }
+                        newvalues = { &#34;$set&#34;: { &#34;estado&#34;: &#34;inactivo&#34; } }
+                        x = coll.update_many(myquery, newvalues)
+                        my_dict = {
+                                &#39;numero&#39;: coll.count(),
+                                &#39;fecha_fin&#39;: tracker.get_slot(&#34;fecha_fin&#34;),
+                                &#39;estado&#39;: &#39;activo&#39;
+                        }
+                        coll.insert_one(my_dict)
+                        dispatcher.utter_message(text=&#34;El nuevo sprint finaliza el {} \nQuieres que me encargue de programar las daily y la retropective?&#34;.format(fecha_fin.strftime(&#34;%x&#34;)))
+                return []
+
+
+
+class ActionSprintActual(Action):
+
+        def name(self) -&gt; Text:
+                return &#34;action_sprint_actual&#34;
+
+        def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+                myquery = { &#34;estado&#34;: &#34;activo&#34; }
+                coll = db.sprint
+                res = coll.find_one(myquery)
+                if (res != None):
+                        dispatcher.utter_message(text=&#39;Sprint actual numero {}, termina el dia {}&#39;.format(res[&#39;numero&#39;],res[&#39;fecha_fin&#39;]))
+                else:
+                        dispatcher.utter_message(text=&#39;No hay un sprint activo&#39;)
+                return []
+
+
+class ActionProgramarDailys(Action):
+
+        def name(self) -&gt; Text:
+                return &#34;action_programar_dailys&#34;
+
+        def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+                tomorrow = datetime.today() + timedelta(days = 1)
+                hora = tracker.get_slot(&#34;horario&#34;)
+                if ((hora != None) and (tracker.get_slot(&#34;fecha_fin&#34;))):
+                        tomorrow = tomorrow.replace(hour=int(hora[0:hora.index(&#34;:&#34;)]))
+                        tomorrow = tomorrow.replace(minute=int(hora[hora.index(&#34;:&#34;)+1:]))
+                        fecha_fin = datetime.strptime(tracker.get_slot(&#34;fecha_fin&#34;), &#39;%d/%m/%Y&#39;)
+                        coll = db.reuniones
+                        while (tomorrow &lt; fecha_fin):
+                                my_dict = {
+                                        &#39;numero&#39;: coll.count(),
+                                        &#39;fecha&#39;: &#34;{}&#34;.format(tomorrow.strftime(&#34;%x&#34;)),
+                                        &#39;horario&#39;: &#34;{}:{}&#34;.format(tomorrow.strftime(&#34;%H&#34;),tomorrow.strftime(&#34;%H&#34;)),
+                                        &#39;descripcion&#39;:&#34;Reunion daily&#34;
+                                        }
+                                coll.insert_one(my_dict)
+                                # dispatcher.utter_message(text=&#34;Daily reunion el dia {} a las {}:{}hs&#34;.format(tomorrow.strftime(&#34;%x&#34;),tomorrow.strftime(&#34;%H&#34;),tomorrow.strftime(&#34;%M&#34;)))
+                                tomorrow += timedelta(days = 1)
+                        my_dict = {
+                                &#39;numero&#39;: coll.count(),
+                                &#39;fecha&#39;: &#34;{}&#34;.format(tomorrow.strftime(&#34;%x&#34;)),
+                                &#39;horario&#39;: &#34;{}:{}&#34;.format(tomorrow.strftime(&#34;%H&#34;),tomorrow.strftime(&#34;%H&#34;)),
+                                &#39;descripcion&#39;:&#34;Reunion retrospective&#34;
+                                }
+                        coll.insert_one(my_dict)
+                        dispatcher.utter_message(text=&#34;Las reuniones fueron agendadas con exito&#34;)
+                return []
+
+
+class ActionProgramarReuniones(Action):
+
+        def name(self) -&gt; Text:
+                return &#34;action_programar_reuniones&#34;
+
+        def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+                tomorrow = datetime.today() + timedelta(days = 1)
+                hora = tracker.get_slot(&#34;horario&#34;)
+                if ((hora != None) and (tracker.get_slot(&#34;fecha_fin&#34;))):
+                        tomorrow = tomorrow.replace(hour=int(hora[0:hora.index(&#34;:&#34;)]))
+                        tomorrow = tomorrow.replace(minute=int(hora[hora.index(&#34;:&#34;)+1:]))
+                        fecha_fin = datetime.strptime(tracker.get_slot(&#34;fecha_fin&#34;), &#39;%d/%m/%Y&#39;)
+                        coll = db.reuniones
+                        while (tomorrow &lt;= fecha_fin):
+                                my_dict = {
+                                        &#39;numero&#39;: coll.count(),
+                                        &#39;fecha&#39;: &#34;{}&#34;.format(tomorrow.strftime(&#34;%x&#34;)),
+                                        &#39;horario&#39;: &#34;{}:{}&#34;.format(tomorrow.strftime(&#34;%H&#34;),tomorrow.strftime(&#34;%H&#34;))
+                                        }
+                                coll.insert_one(my_dict)
+                                # dispatcher.utter_message(text=&#34;Daily reunion el dia {} a las {}:{}hs&#34;.format(tomorrow.strftime(&#34;%x&#34;),tomorrow.strftime(&#34;%H&#34;),tomorrow.strftime(&#34;%M&#34;)))
+                                tomorrow += timedelta(days = 1)
+                        dispatcher.utter_message(text=&#34;Las reuniones fueron agendadas con exito&#34;)
+                return []
+
+
+
+class ActionProximasReuniones(Action):
+
+        def name(self) -&gt; Text:
+                return &#34;action_proximas_reuniones&#34;
+
+        def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+                hoy = datetime.today()
+                coll = db.reuniones
+                res = &#39;Estas son las proximas cinco reuniones: \n&#39;
+                for i in coll.find({&#39;fecha&#39;: { &#34;$gte&#34;: &#34;{}&#34;.format(hoy.strftime(&#34;%x&#34;)) }}).sort(&#39;fecha&#39;,1).limit(5):
+                        if (i[&#39;descripcion&#39;] != None):
+                                res += &#34;{} a las {}. Descripcion: {}\n&#34;.format(i[&#39;fecha&#39;], i[&#39;horario&#39;], i[&#39;descripcion&#39;])
+                        else:
+                                res += &#34;{} a las {}\n&#34;.format(i[&#39;fecha&#39;], i[&#39;horario&#39;]) 
+                dispatcher.utter_message(text=res)
+                return []
+
+
+class ActionEmpezarReunion(Action):
+
+        def name(self) -&gt; Text:
+                return &#34;action_empezar_reunion&#34;
+
+        def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+                hoy = datetime.today()
+                coll = db.reuniones
+                id = tracker.get_slot(&#39;id_reunion&#39;)
+                res = &#39;Da comienzo la reunion: \n&#39;
+                res = coll.find_one({&#39;numero&#39;: id })
+                if (res != None):
+                        dispatcher.utter_message(text= &#39;Da comienzo la reunion: {} \nDescripcion: {}&#39;.format(res[&#39;numero&#39;],res[&#39;descripcion&#39;]))
+                else:
+                        dispatcher.utter_message(text= &#39;No hay una reunion cargada con ese id&#39;)
+                return []</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="src.actions.ActionAsignarTarea"><code class="flex name class">
+<span>class <span class="ident">ActionAsignarTarea</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Next action to be taken in response to a dialogue state.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ActionAsignarTarea(Action):
+
+        def name(self) -&gt; Text:
+                return &#34;action_asignar_tarea&#34;
+
+        def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+                coll = db.tareas
+                nombre= &#39;&#39;
+                descrip = &#39;&#39;
+                criterios = []
+                participantes = [str((tracker.current_state())[&#34;sender_id&#34;])]
+                if (tracker.get_slot(&#34;id_tarea&#34;) != None):
+                        id = tracker.get_slot(&#34;id_tarea&#34;)
+                        for i in coll.find({&#34;estado&#34;: &#34;to_do&#34;}):
+                                if (i[&#39;id_tarea&#39;] == id):
+                                        nombre = i[&#39;nombre&#39;]
+                                        descrip = i[&#39;descripcion&#39;]
+                                        criterios = i[&#39;criterios de aceptacion&#39;]
+                                        coll.delete_one({&#34;id_tarea&#34; : id}) ##ME QUEDE ACA TENGO QUE BORRAR E INSERTAR ABAJO
+                                        break
+                if (nombre != &#39;&#39;):
+                        coll.insert_one({
+                                &#39;id_tarea&#39;:id,
+                                &#39;nombre&#39;:nombre,
+                                &#39;descripcion&#39;:descrip,
+                                &#39;criterios de aceptacion&#39;:criterios,
+                                &#39;participantes&#39;:participantes
+                        })
+                        dispatcher.utter_message(text=&#39;La tarea con id: {} fue correctamente asignada&#39;.format(id))
+                else:
+                        dispatcher.utter_message(text=&#39;No hay una tarea con ese id&#39;)
+                return []</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>rasa_sdk.interfaces.Action</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="src.actions.ActionAsignarTarea.name"><code class="name flex">
+<span>def <span class="ident">name</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Unique identifier of this simple action.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def name(self) -&gt; Text:
+        return &#34;action_asignar_tarea&#34;</code></pre>
+</details>
+</dd>
+<dt id="src.actions.ActionAsignarTarea.run"><code class="name flex">
+<span>def <span class="ident">run</span></span>(<span>self, dispatcher: rasa_sdk.executor.CollectingDispatcher, tracker: rasa_sdk.interfaces.Tracker, domain: Dict[str, Any]) ‑> List[Dict[str, Any]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Execute the side effects of this action.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dispatcher</code></strong></dt>
+<dd>the dispatcher which is used to
+send messages back to the user. Use
+<code>dispatcher.utter_message()</code> for sending messages.</dd>
+<dt><strong><code>tracker</code></strong></dt>
+<dd>the state tracker for the current
+user. You can access slot values using
+<code>tracker.get_slot(slot_name)</code>, the most recent user message
+is <code>tracker.latest_message.text</code> and any other
+<code>rasa_sdk.Tracker</code> property.</dd>
+<dt><strong><code>domain</code></strong></dt>
+<dd>the bot's domain</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A dictionary of <code>rasa_sdk.events.Event</code> instances that is
+returned through the endpoint</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def run(self, dispatcher: CollectingDispatcher,
+tracker: Tracker,
+domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+        coll = db.tareas
+        nombre= &#39;&#39;
+        descrip = &#39;&#39;
+        criterios = []
+        participantes = [str((tracker.current_state())[&#34;sender_id&#34;])]
+        if (tracker.get_slot(&#34;id_tarea&#34;) != None):
+                id = tracker.get_slot(&#34;id_tarea&#34;)
+                for i in coll.find({&#34;estado&#34;: &#34;to_do&#34;}):
+                        if (i[&#39;id_tarea&#39;] == id):
+                                nombre = i[&#39;nombre&#39;]
+                                descrip = i[&#39;descripcion&#39;]
+                                criterios = i[&#39;criterios de aceptacion&#39;]
+                                coll.delete_one({&#34;id_tarea&#34; : id}) ##ME QUEDE ACA TENGO QUE BORRAR E INSERTAR ABAJO
+                                break
+        if (nombre != &#39;&#39;):
+                coll.insert_one({
+                        &#39;id_tarea&#39;:id,
+                        &#39;nombre&#39;:nombre,
+                        &#39;descripcion&#39;:descrip,
+                        &#39;criterios de aceptacion&#39;:criterios,
+                        &#39;participantes&#39;:participantes
+                })
+                dispatcher.utter_message(text=&#39;La tarea con id: {} fue correctamente asignada&#39;.format(id))
+        else:
+                dispatcher.utter_message(text=&#39;No hay una tarea con ese id&#39;)
+        return []</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="src.actions.ActionEmpezarReunion"><code class="flex name class">
+<span>class <span class="ident">ActionEmpezarReunion</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Next action to be taken in response to a dialogue state.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ActionEmpezarReunion(Action):
+
+        def name(self) -&gt; Text:
+                return &#34;action_empezar_reunion&#34;
+
+        def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+                hoy = datetime.today()
+                coll = db.reuniones
+                id = tracker.get_slot(&#39;id_reunion&#39;)
+                res = &#39;Da comienzo la reunion: \n&#39;
+                res = coll.find_one({&#39;numero&#39;: id })
+                if (res != None):
+                        dispatcher.utter_message(text= &#39;Da comienzo la reunion: {} \nDescripcion: {}&#39;.format(res[&#39;numero&#39;],res[&#39;descripcion&#39;]))
+                else:
+                        dispatcher.utter_message(text= &#39;No hay una reunion cargada con ese id&#39;)
+                return []</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>rasa_sdk.interfaces.Action</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="src.actions.ActionEmpezarReunion.name"><code class="name flex">
+<span>def <span class="ident">name</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Unique identifier of this simple action.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def name(self) -&gt; Text:
+        return &#34;action_empezar_reunion&#34;</code></pre>
+</details>
+</dd>
+<dt id="src.actions.ActionEmpezarReunion.run"><code class="name flex">
+<span>def <span class="ident">run</span></span>(<span>self, dispatcher: rasa_sdk.executor.CollectingDispatcher, tracker: rasa_sdk.interfaces.Tracker, domain: Dict[str, Any]) ‑> List[Dict[str, Any]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Execute the side effects of this action.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dispatcher</code></strong></dt>
+<dd>the dispatcher which is used to
+send messages back to the user. Use
+<code>dispatcher.utter_message()</code> for sending messages.</dd>
+<dt><strong><code>tracker</code></strong></dt>
+<dd>the state tracker for the current
+user. You can access slot values using
+<code>tracker.get_slot(slot_name)</code>, the most recent user message
+is <code>tracker.latest_message.text</code> and any other
+<code>rasa_sdk.Tracker</code> property.</dd>
+<dt><strong><code>domain</code></strong></dt>
+<dd>the bot's domain</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A dictionary of <code>rasa_sdk.events.Event</code> instances that is
+returned through the endpoint</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def run(self, dispatcher: CollectingDispatcher,
+tracker: Tracker,
+domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+        hoy = datetime.today()
+        coll = db.reuniones
+        id = tracker.get_slot(&#39;id_reunion&#39;)
+        res = &#39;Da comienzo la reunion: \n&#39;
+        res = coll.find_one({&#39;numero&#39;: id })
+        if (res != None):
+                dispatcher.utter_message(text= &#39;Da comienzo la reunion: {} \nDescripcion: {}&#39;.format(res[&#39;numero&#39;],res[&#39;descripcion&#39;]))
+        else:
+                dispatcher.utter_message(text= &#39;No hay una reunion cargada con ese id&#39;)
+        return []</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="src.actions.ActionMiTarea"><code class="flex name class">
+<span>class <span class="ident">ActionMiTarea</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Next action to be taken in response to a dialogue state.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ActionMiTarea(Action):
+
+        def name(self) -&gt; Text:
+                return &#34;action_mi_tarea&#34;
+
+        def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+                coll = db.tareas
+                # dispatcher.utter_message(text=tracker.sender_id)
+                asignada = False
+                user = str((tracker.current_state())[&#34;sender_id&#34;]) #Alguna forma de obtener el id del usuario
+                for i in coll.find({&#34;estado&#34; : &#34;in_progress&#34;}):
+                        if (asignada == False):
+                                if (user in i[&#39;participantes&#39;]):
+                                        dispatcher.utter_message(text=&#34;{} tienes la tarea {} asignada para hoy.&#34;.format(user,i[&#39;nombre&#39;]))
+                                        asignada = True
+                if(asignada == False):
+                        dispatcher.utter_message(text=&#34;{} no tienes ninguna tarea asignada, debes revisar las tareas en estado to do y tomar una&#34;.format(user))
+                return []</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>rasa_sdk.interfaces.Action</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="src.actions.ActionMiTarea.name"><code class="name flex">
+<span>def <span class="ident">name</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Unique identifier of this simple action.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def name(self) -&gt; Text:
+        return &#34;action_mi_tarea&#34;</code></pre>
+</details>
+</dd>
+<dt id="src.actions.ActionMiTarea.run"><code class="name flex">
+<span>def <span class="ident">run</span></span>(<span>self, dispatcher: rasa_sdk.executor.CollectingDispatcher, tracker: rasa_sdk.interfaces.Tracker, domain: Dict[str, Any]) ‑> List[Dict[str, Any]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Execute the side effects of this action.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dispatcher</code></strong></dt>
+<dd>the dispatcher which is used to
+send messages back to the user. Use
+<code>dispatcher.utter_message()</code> for sending messages.</dd>
+<dt><strong><code>tracker</code></strong></dt>
+<dd>the state tracker for the current
+user. You can access slot values using
+<code>tracker.get_slot(slot_name)</code>, the most recent user message
+is <code>tracker.latest_message.text</code> and any other
+<code>rasa_sdk.Tracker</code> property.</dd>
+<dt><strong><code>domain</code></strong></dt>
+<dd>the bot's domain</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A dictionary of <code>rasa_sdk.events.Event</code> instances that is
+returned through the endpoint</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def run(self, dispatcher: CollectingDispatcher,
+tracker: Tracker,
+domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+        coll = db.tareas
+        # dispatcher.utter_message(text=tracker.sender_id)
+        asignada = False
+        user = str((tracker.current_state())[&#34;sender_id&#34;]) #Alguna forma de obtener el id del usuario
+        for i in coll.find({&#34;estado&#34; : &#34;in_progress&#34;}):
+                if (asignada == False):
+                        if (user in i[&#39;participantes&#39;]):
+                                dispatcher.utter_message(text=&#34;{} tienes la tarea {} asignada para hoy.&#34;.format(user,i[&#39;nombre&#39;]))
+                                asignada = True
+        if(asignada == False):
+                dispatcher.utter_message(text=&#34;{} no tienes ninguna tarea asignada, debes revisar las tareas en estado to do y tomar una&#34;.format(user))
+        return []</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="src.actions.ActionNuevaReunion"><code class="flex name class">
+<span>class <span class="ident">ActionNuevaReunion</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Next action to be taken in response to a dialogue state.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ActionNuevaReunion(Action):
+
+        def name(self) -&gt; Text:
+                return &#34;action_nueva_reunion&#34;
+
+        def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+                # dispatcher.utter_message(text=tracker.sender_id)
+                
+                hora = tracker.get_slot(&#34;horario&#34;)
+                if (hora != None):
+                        hoy = datetime.now()
+                        h = int(hora[0:hora.index(&#39;:&#39;)])
+                        m = int(hora[hora.index(&#39;:&#39;)+1:])
+                        hoy = hoy.replace(hour=h)
+                        hoy = hoy.replace(minute=m)
+                        coll = db.reuniones
+                        my_dict = my_dict = {
+                                &#39;numero&#39;: coll.count(),
+                                &#39;fecha&#39;: &#34;{}&#34;.format(hoy.strftime(&#34;%x&#34;)),
+                                &#39;horario&#39;: &#34;{}:{}&#34;.format(hoy.strftime(&#34;%H&#34;),hoy.strftime(&#34;%H&#34;))
+                                }
+                        if (tracker.get_slot(&#34;descripcion&#34;) != None):
+                                my_dict = {
+                                &#39;numero&#39;: coll.count(),
+                                &#39;fecha&#39;: &#34;{}&#34;.format(hoy.strftime(&#34;%x&#34;)),
+                                &#39;horario&#39;: &#34;{}:{}&#34;.format(hoy.strftime(&#34;%H&#34;),hoy.strftime(&#34;%H&#34;)),
+                                &#39;descripcion&#39;:tracker.get_slot(&#34;descripcion&#34;)
+                                }
+                        coll.insert_one(my_dict)
+                        dispatcher.utter_message(text=&#34;Programaste una reunion para hoy a las {}:{} hs, \nQuieres que me encargue de programarla en los proximos dias?&#34;.format(hoy.strftime(&#34;%H&#34;),hoy.strftime(&#34;%M&#34;)))
+                return []</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>rasa_sdk.interfaces.Action</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="src.actions.ActionNuevaReunion.name"><code class="name flex">
+<span>def <span class="ident">name</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Unique identifier of this simple action.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def name(self) -&gt; Text:
+        return &#34;action_nueva_reunion&#34;</code></pre>
+</details>
+</dd>
+<dt id="src.actions.ActionNuevaReunion.run"><code class="name flex">
+<span>def <span class="ident">run</span></span>(<span>self, dispatcher: rasa_sdk.executor.CollectingDispatcher, tracker: rasa_sdk.interfaces.Tracker, domain: Dict[str, Any]) ‑> List[Dict[str, Any]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Execute the side effects of this action.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dispatcher</code></strong></dt>
+<dd>the dispatcher which is used to
+send messages back to the user. Use
+<code>dispatcher.utter_message()</code> for sending messages.</dd>
+<dt><strong><code>tracker</code></strong></dt>
+<dd>the state tracker for the current
+user. You can access slot values using
+<code>tracker.get_slot(slot_name)</code>, the most recent user message
+is <code>tracker.latest_message.text</code> and any other
+<code>rasa_sdk.Tracker</code> property.</dd>
+<dt><strong><code>domain</code></strong></dt>
+<dd>the bot's domain</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A dictionary of <code>rasa_sdk.events.Event</code> instances that is
+returned through the endpoint</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def run(self, dispatcher: CollectingDispatcher,
+tracker: Tracker,
+domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+        # dispatcher.utter_message(text=tracker.sender_id)
+        
+        hora = tracker.get_slot(&#34;horario&#34;)
+        if (hora != None):
+                hoy = datetime.now()
+                h = int(hora[0:hora.index(&#39;:&#39;)])
+                m = int(hora[hora.index(&#39;:&#39;)+1:])
+                hoy = hoy.replace(hour=h)
+                hoy = hoy.replace(minute=m)
+                coll = db.reuniones
+                my_dict = my_dict = {
+                        &#39;numero&#39;: coll.count(),
+                        &#39;fecha&#39;: &#34;{}&#34;.format(hoy.strftime(&#34;%x&#34;)),
+                        &#39;horario&#39;: &#34;{}:{}&#34;.format(hoy.strftime(&#34;%H&#34;),hoy.strftime(&#34;%H&#34;))
+                        }
+                if (tracker.get_slot(&#34;descripcion&#34;) != None):
+                        my_dict = {
+                        &#39;numero&#39;: coll.count(),
+                        &#39;fecha&#39;: &#34;{}&#34;.format(hoy.strftime(&#34;%x&#34;)),
+                        &#39;horario&#39;: &#34;{}:{}&#34;.format(hoy.strftime(&#34;%H&#34;),hoy.strftime(&#34;%H&#34;)),
+                        &#39;descripcion&#39;:tracker.get_slot(&#34;descripcion&#34;)
+                        }
+                coll.insert_one(my_dict)
+                dispatcher.utter_message(text=&#34;Programaste una reunion para hoy a las {}:{} hs, \nQuieres que me encargue de programarla en los proximos dias?&#34;.format(hoy.strftime(&#34;%H&#34;),hoy.strftime(&#34;%M&#34;)))
+        return []</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="src.actions.ActionNuevoSprint"><code class="flex name class">
+<span>class <span class="ident">ActionNuevoSprint</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Next action to be taken in response to a dialogue state.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ActionNuevoSprint(Action):
+
+        def name(self) -&gt; Text:
+                return &#34;action_nuevo_sprint&#34;
+
+        def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+                if (tracker.get_slot(&#34;fecha_fin&#34;) != None):
+                        fecha_fin = datetime.strptime(tracker.get_slot(&#34;fecha_fin&#34;), &#39;%d/%m/%Y&#39;)
+                        coll = db.sprint
+                        myquery = { &#34;estado&#34;: &#34;activo&#34; }
+                        newvalues = { &#34;$set&#34;: { &#34;estado&#34;: &#34;inactivo&#34; } }
+                        x = coll.update_many(myquery, newvalues)
+                        my_dict = {
+                                &#39;numero&#39;: coll.count(),
+                                &#39;fecha_fin&#39;: tracker.get_slot(&#34;fecha_fin&#34;),
+                                &#39;estado&#39;: &#39;activo&#39;
+                        }
+                        coll.insert_one(my_dict)
+                        dispatcher.utter_message(text=&#34;El nuevo sprint finaliza el {} \nQuieres que me encargue de programar las daily y la retropective?&#34;.format(fecha_fin.strftime(&#34;%x&#34;)))
+                return []</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>rasa_sdk.interfaces.Action</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="src.actions.ActionNuevoSprint.name"><code class="name flex">
+<span>def <span class="ident">name</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Unique identifier of this simple action.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def name(self) -&gt; Text:
+        return &#34;action_nuevo_sprint&#34;</code></pre>
+</details>
+</dd>
+<dt id="src.actions.ActionNuevoSprint.run"><code class="name flex">
+<span>def <span class="ident">run</span></span>(<span>self, dispatcher: rasa_sdk.executor.CollectingDispatcher, tracker: rasa_sdk.interfaces.Tracker, domain: Dict[str, Any]) ‑> List[Dict[str, Any]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Execute the side effects of this action.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dispatcher</code></strong></dt>
+<dd>the dispatcher which is used to
+send messages back to the user. Use
+<code>dispatcher.utter_message()</code> for sending messages.</dd>
+<dt><strong><code>tracker</code></strong></dt>
+<dd>the state tracker for the current
+user. You can access slot values using
+<code>tracker.get_slot(slot_name)</code>, the most recent user message
+is <code>tracker.latest_message.text</code> and any other
+<code>rasa_sdk.Tracker</code> property.</dd>
+<dt><strong><code>domain</code></strong></dt>
+<dd>the bot's domain</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A dictionary of <code>rasa_sdk.events.Event</code> instances that is
+returned through the endpoint</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def run(self, dispatcher: CollectingDispatcher,
+tracker: Tracker,
+domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+        if (tracker.get_slot(&#34;fecha_fin&#34;) != None):
+                fecha_fin = datetime.strptime(tracker.get_slot(&#34;fecha_fin&#34;), &#39;%d/%m/%Y&#39;)
+                coll = db.sprint
+                myquery = { &#34;estado&#34;: &#34;activo&#34; }
+                newvalues = { &#34;$set&#34;: { &#34;estado&#34;: &#34;inactivo&#34; } }
+                x = coll.update_many(myquery, newvalues)
+                my_dict = {
+                        &#39;numero&#39;: coll.count(),
+                        &#39;fecha_fin&#39;: tracker.get_slot(&#34;fecha_fin&#34;),
+                        &#39;estado&#39;: &#39;activo&#39;
+                }
+                coll.insert_one(my_dict)
+                dispatcher.utter_message(text=&#34;El nuevo sprint finaliza el {} \nQuieres que me encargue de programar las daily y la retropective?&#34;.format(fecha_fin.strftime(&#34;%x&#34;)))
+        return []</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="src.actions.ActionOnlineMembers"><code class="flex name class">
+<span>class <span class="ident">ActionOnlineMembers</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Next action to be taken in response to a dialogue state.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ActionOnlineMembers(Action):
+
+        def name(self) -&gt; Text:
+                return &#34;action_online_members&#34;
+
+        def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+                coll = db.online 
+                rta = &#34;&#34;
+                for i in coll.find():      
+                        rta += &#34;{} se encuentra en {} \n&#34;.format(i[&#39;name&#39;], i[&#39;sala&#39;])
+                dispatcher.utter_message(text=rta)
+                return []</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>rasa_sdk.interfaces.Action</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="src.actions.ActionOnlineMembers.name"><code class="name flex">
+<span>def <span class="ident">name</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Unique identifier of this simple action.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def name(self) -&gt; Text:
+        return &#34;action_online_members&#34;</code></pre>
+</details>
+</dd>
+<dt id="src.actions.ActionOnlineMembers.run"><code class="name flex">
+<span>def <span class="ident">run</span></span>(<span>self, dispatcher: rasa_sdk.executor.CollectingDispatcher, tracker: rasa_sdk.interfaces.Tracker, domain: Dict[str, Any]) ‑> List[Dict[str, Any]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Execute the side effects of this action.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dispatcher</code></strong></dt>
+<dd>the dispatcher which is used to
+send messages back to the user. Use
+<code>dispatcher.utter_message()</code> for sending messages.</dd>
+<dt><strong><code>tracker</code></strong></dt>
+<dd>the state tracker for the current
+user. You can access slot values using
+<code>tracker.get_slot(slot_name)</code>, the most recent user message
+is <code>tracker.latest_message.text</code> and any other
+<code>rasa_sdk.Tracker</code> property.</dd>
+<dt><strong><code>domain</code></strong></dt>
+<dd>the bot's domain</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A dictionary of <code>rasa_sdk.events.Event</code> instances that is
+returned through the endpoint</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def run(self, dispatcher: CollectingDispatcher,
+tracker: Tracker,
+domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+        coll = db.online 
+        rta = &#34;&#34;
+        for i in coll.find():      
+                rta += &#34;{} se encuentra en {} \n&#34;.format(i[&#39;name&#39;], i[&#39;sala&#39;])
+        dispatcher.utter_message(text=rta)
+        return []</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="src.actions.ActionOrganizacionActual"><code class="flex name class">
+<span>class <span class="ident">ActionOrganizacionActual</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Next action to be taken in response to a dialogue state.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ActionOrganizacionActual(Action):
+
+        def name(self) -&gt; Text:
+                return &#34;action_organizacion_actual&#34;
+
+        def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+                coll = db.grupos
+                rta = &#34;&#34;
+                for i in coll.find():
+                        rta += &#34;--Grupo: {}. Cuyo lider es: {}&#34;.format(i[&#39;grupo&#39;], i[&#39;lider&#39;])
+                dispatcher.utter_message(text=rta)
+                return []</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>rasa_sdk.interfaces.Action</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="src.actions.ActionOrganizacionActual.name"><code class="name flex">
+<span>def <span class="ident">name</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Unique identifier of this simple action.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def name(self) -&gt; Text:
+        return &#34;action_organizacion_actual&#34;</code></pre>
+</details>
+</dd>
+<dt id="src.actions.ActionOrganizacionActual.run"><code class="name flex">
+<span>def <span class="ident">run</span></span>(<span>self, dispatcher: rasa_sdk.executor.CollectingDispatcher, tracker: rasa_sdk.interfaces.Tracker, domain: Dict[str, Any]) ‑> List[Dict[str, Any]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Execute the side effects of this action.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dispatcher</code></strong></dt>
+<dd>the dispatcher which is used to
+send messages back to the user. Use
+<code>dispatcher.utter_message()</code> for sending messages.</dd>
+<dt><strong><code>tracker</code></strong></dt>
+<dd>the state tracker for the current
+user. You can access slot values using
+<code>tracker.get_slot(slot_name)</code>, the most recent user message
+is <code>tracker.latest_message.text</code> and any other
+<code>rasa_sdk.Tracker</code> property.</dd>
+<dt><strong><code>domain</code></strong></dt>
+<dd>the bot's domain</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A dictionary of <code>rasa_sdk.events.Event</code> instances that is
+returned through the endpoint</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def run(self, dispatcher: CollectingDispatcher,
+tracker: Tracker,
+domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+        coll = db.grupos
+        rta = &#34;&#34;
+        for i in coll.find():
+                rta += &#34;--Grupo: {}. Cuyo lider es: {}&#34;.format(i[&#39;grupo&#39;], i[&#39;lider&#39;])
+        dispatcher.utter_message(text=rta)
+        return []</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="src.actions.ActionProgramarDailys"><code class="flex name class">
+<span>class <span class="ident">ActionProgramarDailys</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Next action to be taken in response to a dialogue state.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ActionProgramarDailys(Action):
+
+        def name(self) -&gt; Text:
+                return &#34;action_programar_dailys&#34;
+
+        def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+                tomorrow = datetime.today() + timedelta(days = 1)
+                hora = tracker.get_slot(&#34;horario&#34;)
+                if ((hora != None) and (tracker.get_slot(&#34;fecha_fin&#34;))):
+                        tomorrow = tomorrow.replace(hour=int(hora[0:hora.index(&#34;:&#34;)]))
+                        tomorrow = tomorrow.replace(minute=int(hora[hora.index(&#34;:&#34;)+1:]))
+                        fecha_fin = datetime.strptime(tracker.get_slot(&#34;fecha_fin&#34;), &#39;%d/%m/%Y&#39;)
+                        coll = db.reuniones
+                        while (tomorrow &lt; fecha_fin):
+                                my_dict = {
+                                        &#39;numero&#39;: coll.count(),
+                                        &#39;fecha&#39;: &#34;{}&#34;.format(tomorrow.strftime(&#34;%x&#34;)),
+                                        &#39;horario&#39;: &#34;{}:{}&#34;.format(tomorrow.strftime(&#34;%H&#34;),tomorrow.strftime(&#34;%H&#34;)),
+                                        &#39;descripcion&#39;:&#34;Reunion daily&#34;
+                                        }
+                                coll.insert_one(my_dict)
+                                # dispatcher.utter_message(text=&#34;Daily reunion el dia {} a las {}:{}hs&#34;.format(tomorrow.strftime(&#34;%x&#34;),tomorrow.strftime(&#34;%H&#34;),tomorrow.strftime(&#34;%M&#34;)))
+                                tomorrow += timedelta(days = 1)
+                        my_dict = {
+                                &#39;numero&#39;: coll.count(),
+                                &#39;fecha&#39;: &#34;{}&#34;.format(tomorrow.strftime(&#34;%x&#34;)),
+                                &#39;horario&#39;: &#34;{}:{}&#34;.format(tomorrow.strftime(&#34;%H&#34;),tomorrow.strftime(&#34;%H&#34;)),
+                                &#39;descripcion&#39;:&#34;Reunion retrospective&#34;
+                                }
+                        coll.insert_one(my_dict)
+                        dispatcher.utter_message(text=&#34;Las reuniones fueron agendadas con exito&#34;)
+                return []</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>rasa_sdk.interfaces.Action</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="src.actions.ActionProgramarDailys.name"><code class="name flex">
+<span>def <span class="ident">name</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Unique identifier of this simple action.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def name(self) -&gt; Text:
+        return &#34;action_programar_dailys&#34;</code></pre>
+</details>
+</dd>
+<dt id="src.actions.ActionProgramarDailys.run"><code class="name flex">
+<span>def <span class="ident">run</span></span>(<span>self, dispatcher: rasa_sdk.executor.CollectingDispatcher, tracker: rasa_sdk.interfaces.Tracker, domain: Dict[str, Any]) ‑> List[Dict[str, Any]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Execute the side effects of this action.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dispatcher</code></strong></dt>
+<dd>the dispatcher which is used to
+send messages back to the user. Use
+<code>dispatcher.utter_message()</code> for sending messages.</dd>
+<dt><strong><code>tracker</code></strong></dt>
+<dd>the state tracker for the current
+user. You can access slot values using
+<code>tracker.get_slot(slot_name)</code>, the most recent user message
+is <code>tracker.latest_message.text</code> and any other
+<code>rasa_sdk.Tracker</code> property.</dd>
+<dt><strong><code>domain</code></strong></dt>
+<dd>the bot's domain</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A dictionary of <code>rasa_sdk.events.Event</code> instances that is
+returned through the endpoint</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def run(self, dispatcher: CollectingDispatcher,
+tracker: Tracker,
+domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+        tomorrow = datetime.today() + timedelta(days = 1)
+        hora = tracker.get_slot(&#34;horario&#34;)
+        if ((hora != None) and (tracker.get_slot(&#34;fecha_fin&#34;))):
+                tomorrow = tomorrow.replace(hour=int(hora[0:hora.index(&#34;:&#34;)]))
+                tomorrow = tomorrow.replace(minute=int(hora[hora.index(&#34;:&#34;)+1:]))
+                fecha_fin = datetime.strptime(tracker.get_slot(&#34;fecha_fin&#34;), &#39;%d/%m/%Y&#39;)
+                coll = db.reuniones
+                while (tomorrow &lt; fecha_fin):
+                        my_dict = {
+                                &#39;numero&#39;: coll.count(),
+                                &#39;fecha&#39;: &#34;{}&#34;.format(tomorrow.strftime(&#34;%x&#34;)),
+                                &#39;horario&#39;: &#34;{}:{}&#34;.format(tomorrow.strftime(&#34;%H&#34;),tomorrow.strftime(&#34;%H&#34;)),
+                                &#39;descripcion&#39;:&#34;Reunion daily&#34;
+                                }
+                        coll.insert_one(my_dict)
+                        # dispatcher.utter_message(text=&#34;Daily reunion el dia {} a las {}:{}hs&#34;.format(tomorrow.strftime(&#34;%x&#34;),tomorrow.strftime(&#34;%H&#34;),tomorrow.strftime(&#34;%M&#34;)))
+                        tomorrow += timedelta(days = 1)
+                my_dict = {
+                        &#39;numero&#39;: coll.count(),
+                        &#39;fecha&#39;: &#34;{}&#34;.format(tomorrow.strftime(&#34;%x&#34;)),
+                        &#39;horario&#39;: &#34;{}:{}&#34;.format(tomorrow.strftime(&#34;%H&#34;),tomorrow.strftime(&#34;%H&#34;)),
+                        &#39;descripcion&#39;:&#34;Reunion retrospective&#34;
+                        }
+                coll.insert_one(my_dict)
+                dispatcher.utter_message(text=&#34;Las reuniones fueron agendadas con exito&#34;)
+        return []</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="src.actions.ActionProgramarReuniones"><code class="flex name class">
+<span>class <span class="ident">ActionProgramarReuniones</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Next action to be taken in response to a dialogue state.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ActionProgramarReuniones(Action):
+
+        def name(self) -&gt; Text:
+                return &#34;action_programar_reuniones&#34;
+
+        def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+                tomorrow = datetime.today() + timedelta(days = 1)
+                hora = tracker.get_slot(&#34;horario&#34;)
+                if ((hora != None) and (tracker.get_slot(&#34;fecha_fin&#34;))):
+                        tomorrow = tomorrow.replace(hour=int(hora[0:hora.index(&#34;:&#34;)]))
+                        tomorrow = tomorrow.replace(minute=int(hora[hora.index(&#34;:&#34;)+1:]))
+                        fecha_fin = datetime.strptime(tracker.get_slot(&#34;fecha_fin&#34;), &#39;%d/%m/%Y&#39;)
+                        coll = db.reuniones
+                        while (tomorrow &lt;= fecha_fin):
+                                my_dict = {
+                                        &#39;numero&#39;: coll.count(),
+                                        &#39;fecha&#39;: &#34;{}&#34;.format(tomorrow.strftime(&#34;%x&#34;)),
+                                        &#39;horario&#39;: &#34;{}:{}&#34;.format(tomorrow.strftime(&#34;%H&#34;),tomorrow.strftime(&#34;%H&#34;))
+                                        }
+                                coll.insert_one(my_dict)
+                                # dispatcher.utter_message(text=&#34;Daily reunion el dia {} a las {}:{}hs&#34;.format(tomorrow.strftime(&#34;%x&#34;),tomorrow.strftime(&#34;%H&#34;),tomorrow.strftime(&#34;%M&#34;)))
+                                tomorrow += timedelta(days = 1)
+                        dispatcher.utter_message(text=&#34;Las reuniones fueron agendadas con exito&#34;)
+                return []</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>rasa_sdk.interfaces.Action</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="src.actions.ActionProgramarReuniones.name"><code class="name flex">
+<span>def <span class="ident">name</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Unique identifier of this simple action.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def name(self) -&gt; Text:
+        return &#34;action_programar_reuniones&#34;</code></pre>
+</details>
+</dd>
+<dt id="src.actions.ActionProgramarReuniones.run"><code class="name flex">
+<span>def <span class="ident">run</span></span>(<span>self, dispatcher: rasa_sdk.executor.CollectingDispatcher, tracker: rasa_sdk.interfaces.Tracker, domain: Dict[str, Any]) ‑> List[Dict[str, Any]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Execute the side effects of this action.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dispatcher</code></strong></dt>
+<dd>the dispatcher which is used to
+send messages back to the user. Use
+<code>dispatcher.utter_message()</code> for sending messages.</dd>
+<dt><strong><code>tracker</code></strong></dt>
+<dd>the state tracker for the current
+user. You can access slot values using
+<code>tracker.get_slot(slot_name)</code>, the most recent user message
+is <code>tracker.latest_message.text</code> and any other
+<code>rasa_sdk.Tracker</code> property.</dd>
+<dt><strong><code>domain</code></strong></dt>
+<dd>the bot's domain</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A dictionary of <code>rasa_sdk.events.Event</code> instances that is
+returned through the endpoint</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def run(self, dispatcher: CollectingDispatcher,
+tracker: Tracker,
+domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+        tomorrow = datetime.today() + timedelta(days = 1)
+        hora = tracker.get_slot(&#34;horario&#34;)
+        if ((hora != None) and (tracker.get_slot(&#34;fecha_fin&#34;))):
+                tomorrow = tomorrow.replace(hour=int(hora[0:hora.index(&#34;:&#34;)]))
+                tomorrow = tomorrow.replace(minute=int(hora[hora.index(&#34;:&#34;)+1:]))
+                fecha_fin = datetime.strptime(tracker.get_slot(&#34;fecha_fin&#34;), &#39;%d/%m/%Y&#39;)
+                coll = db.reuniones
+                while (tomorrow &lt;= fecha_fin):
+                        my_dict = {
+                                &#39;numero&#39;: coll.count(),
+                                &#39;fecha&#39;: &#34;{}&#34;.format(tomorrow.strftime(&#34;%x&#34;)),
+                                &#39;horario&#39;: &#34;{}:{}&#34;.format(tomorrow.strftime(&#34;%H&#34;),tomorrow.strftime(&#34;%H&#34;))
+                                }
+                        coll.insert_one(my_dict)
+                        # dispatcher.utter_message(text=&#34;Daily reunion el dia {} a las {}:{}hs&#34;.format(tomorrow.strftime(&#34;%x&#34;),tomorrow.strftime(&#34;%H&#34;),tomorrow.strftime(&#34;%M&#34;)))
+                        tomorrow += timedelta(days = 1)
+                dispatcher.utter_message(text=&#34;Las reuniones fueron agendadas con exito&#34;)
+        return []</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="src.actions.ActionProximasReuniones"><code class="flex name class">
+<span>class <span class="ident">ActionProximasReuniones</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Next action to be taken in response to a dialogue state.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ActionProximasReuniones(Action):
+
+        def name(self) -&gt; Text:
+                return &#34;action_proximas_reuniones&#34;
+
+        def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+                hoy = datetime.today()
+                coll = db.reuniones
+                res = &#39;Estas son las proximas cinco reuniones: \n&#39;
+                for i in coll.find({&#39;fecha&#39;: { &#34;$gte&#34;: &#34;{}&#34;.format(hoy.strftime(&#34;%x&#34;)) }}).sort(&#39;fecha&#39;,1).limit(5):
+                        if (i[&#39;descripcion&#39;] != None):
+                                res += &#34;{} a las {}. Descripcion: {}\n&#34;.format(i[&#39;fecha&#39;], i[&#39;horario&#39;], i[&#39;descripcion&#39;])
+                        else:
+                                res += &#34;{} a las {}\n&#34;.format(i[&#39;fecha&#39;], i[&#39;horario&#39;]) 
+                dispatcher.utter_message(text=res)
+                return []</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>rasa_sdk.interfaces.Action</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="src.actions.ActionProximasReuniones.name"><code class="name flex">
+<span>def <span class="ident">name</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Unique identifier of this simple action.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def name(self) -&gt; Text:
+        return &#34;action_proximas_reuniones&#34;</code></pre>
+</details>
+</dd>
+<dt id="src.actions.ActionProximasReuniones.run"><code class="name flex">
+<span>def <span class="ident">run</span></span>(<span>self, dispatcher: rasa_sdk.executor.CollectingDispatcher, tracker: rasa_sdk.interfaces.Tracker, domain: Dict[str, Any]) ‑> List[Dict[str, Any]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Execute the side effects of this action.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dispatcher</code></strong></dt>
+<dd>the dispatcher which is used to
+send messages back to the user. Use
+<code>dispatcher.utter_message()</code> for sending messages.</dd>
+<dt><strong><code>tracker</code></strong></dt>
+<dd>the state tracker for the current
+user. You can access slot values using
+<code>tracker.get_slot(slot_name)</code>, the most recent user message
+is <code>tracker.latest_message.text</code> and any other
+<code>rasa_sdk.Tracker</code> property.</dd>
+<dt><strong><code>domain</code></strong></dt>
+<dd>the bot's domain</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A dictionary of <code>rasa_sdk.events.Event</code> instances that is
+returned through the endpoint</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def run(self, dispatcher: CollectingDispatcher,
+tracker: Tracker,
+domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+        hoy = datetime.today()
+        coll = db.reuniones
+        res = &#39;Estas son las proximas cinco reuniones: \n&#39;
+        for i in coll.find({&#39;fecha&#39;: { &#34;$gte&#34;: &#34;{}&#34;.format(hoy.strftime(&#34;%x&#34;)) }}).sort(&#39;fecha&#39;,1).limit(5):
+                if (i[&#39;descripcion&#39;] != None):
+                        res += &#34;{} a las {}. Descripcion: {}\n&#34;.format(i[&#39;fecha&#39;], i[&#39;horario&#39;], i[&#39;descripcion&#39;])
+                else:
+                        res += &#34;{} a las {}\n&#34;.format(i[&#39;fecha&#39;], i[&#39;horario&#39;]) 
+        dispatcher.utter_message(text=res)
+        return []</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="src.actions.ActionSprintActual"><code class="flex name class">
+<span>class <span class="ident">ActionSprintActual</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Next action to be taken in response to a dialogue state.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ActionSprintActual(Action):
+
+        def name(self) -&gt; Text:
+                return &#34;action_sprint_actual&#34;
+
+        def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+                myquery = { &#34;estado&#34;: &#34;activo&#34; }
+                coll = db.sprint
+                res = coll.find_one(myquery)
+                if (res != None):
+                        dispatcher.utter_message(text=&#39;Sprint actual numero {}, termina el dia {}&#39;.format(res[&#39;numero&#39;],res[&#39;fecha_fin&#39;]))
+                else:
+                        dispatcher.utter_message(text=&#39;No hay un sprint activo&#39;)
+                return []</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>rasa_sdk.interfaces.Action</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="src.actions.ActionSprintActual.name"><code class="name flex">
+<span>def <span class="ident">name</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Unique identifier of this simple action.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def name(self) -&gt; Text:
+        return &#34;action_sprint_actual&#34;</code></pre>
+</details>
+</dd>
+<dt id="src.actions.ActionSprintActual.run"><code class="name flex">
+<span>def <span class="ident">run</span></span>(<span>self, dispatcher: rasa_sdk.executor.CollectingDispatcher, tracker: rasa_sdk.interfaces.Tracker, domain: Dict[str, Any]) ‑> List[Dict[str, Any]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Execute the side effects of this action.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dispatcher</code></strong></dt>
+<dd>the dispatcher which is used to
+send messages back to the user. Use
+<code>dispatcher.utter_message()</code> for sending messages.</dd>
+<dt><strong><code>tracker</code></strong></dt>
+<dd>the state tracker for the current
+user. You can access slot values using
+<code>tracker.get_slot(slot_name)</code>, the most recent user message
+is <code>tracker.latest_message.text</code> and any other
+<code>rasa_sdk.Tracker</code> property.</dd>
+<dt><strong><code>domain</code></strong></dt>
+<dd>the bot's domain</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A dictionary of <code>rasa_sdk.events.Event</code> instances that is
+returned through the endpoint</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def run(self, dispatcher: CollectingDispatcher,
+tracker: Tracker,
+domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+        myquery = { &#34;estado&#34;: &#34;activo&#34; }
+        coll = db.sprint
+        res = coll.find_one(myquery)
+        if (res != None):
+                dispatcher.utter_message(text=&#39;Sprint actual numero {}, termina el dia {}&#39;.format(res[&#39;numero&#39;],res[&#39;fecha_fin&#39;]))
+        else:
+                dispatcher.utter_message(text=&#39;No hay un sprint activo&#39;)
+        return []</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="src.actions.ActionTareasDone"><code class="flex name class">
+<span>class <span class="ident">ActionTareasDone</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Next action to be taken in response to a dialogue state.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ActionTareasDone(Action):
+
+        def name(self) -&gt; Text:
+                return &#34;action_tareas_done&#34;
+
+        def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+                coll = db.tareas
+                rta = &#34;&#34;
+                rta += &#34;Las tareas en estado done son:\n&#34;
+                for i in coll.find({&#34;estado&#34; : &#34;done&#34;}):
+                        rta+=&#34;--Tarea: {}. Nombre {}.\n Descripcion: {}.\n Criterios de aceptacion: {}\n&#34;.format(i[&#39;id_tarea&#39;],i[&#39;nombre&#39;], i[&#39;descripcion&#39;], i[&#39;criterios de aceptacion&#39;])
+                dispatcher.utter_message(text=rta)
+                return []</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>rasa_sdk.interfaces.Action</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="src.actions.ActionTareasDone.name"><code class="name flex">
+<span>def <span class="ident">name</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Unique identifier of this simple action.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def name(self) -&gt; Text:
+        return &#34;action_tareas_done&#34;</code></pre>
+</details>
+</dd>
+<dt id="src.actions.ActionTareasDone.run"><code class="name flex">
+<span>def <span class="ident">run</span></span>(<span>self, dispatcher: rasa_sdk.executor.CollectingDispatcher, tracker: rasa_sdk.interfaces.Tracker, domain: Dict[str, Any]) ‑> List[Dict[str, Any]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Execute the side effects of this action.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dispatcher</code></strong></dt>
+<dd>the dispatcher which is used to
+send messages back to the user. Use
+<code>dispatcher.utter_message()</code> for sending messages.</dd>
+<dt><strong><code>tracker</code></strong></dt>
+<dd>the state tracker for the current
+user. You can access slot values using
+<code>tracker.get_slot(slot_name)</code>, the most recent user message
+is <code>tracker.latest_message.text</code> and any other
+<code>rasa_sdk.Tracker</code> property.</dd>
+<dt><strong><code>domain</code></strong></dt>
+<dd>the bot's domain</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A dictionary of <code>rasa_sdk.events.Event</code> instances that is
+returned through the endpoint</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def run(self, dispatcher: CollectingDispatcher,
+tracker: Tracker,
+domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+        coll = db.tareas
+        rta = &#34;&#34;
+        rta += &#34;Las tareas en estado done son:\n&#34;
+        for i in coll.find({&#34;estado&#34; : &#34;done&#34;}):
+                rta+=&#34;--Tarea: {}. Nombre {}.\n Descripcion: {}.\n Criterios de aceptacion: {}\n&#34;.format(i[&#39;id_tarea&#39;],i[&#39;nombre&#39;], i[&#39;descripcion&#39;], i[&#39;criterios de aceptacion&#39;])
+        dispatcher.utter_message(text=rta)
+        return []</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="src.actions.ActionTareasInProgress"><code class="flex name class">
+<span>class <span class="ident">ActionTareasInProgress</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Next action to be taken in response to a dialogue state.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ActionTareasInProgress(Action):
+
+        def name(self) -&gt; Text:
+                return &#34;action_tareas_in_progress&#34;
+
+        def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+                coll = db.tareas
+                rta = &#34;&#34;
+                rta += &#34;Las tareas en estado in progress son:\n&#34;
+                for i in coll.find({&#34;estado&#34; : &#34;in_progress&#34;}):     
+                        rta+=&#34;--Tarea: {}. Nombre {}.\n Descripcion: {}.\n Criterios de aceptacion: {}\n Participantes: {}\n&#34;.format(i[&#39;id_tarea&#39;],i[&#39;nombre&#39;], i[&#39;descripcion&#39;], i[&#39;criterios de aceptacion&#39;],i[&#39;participantes&#39;])
+                dispatcher.utter_message(text=rta)
+                return []</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>rasa_sdk.interfaces.Action</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="src.actions.ActionTareasInProgress.name"><code class="name flex">
+<span>def <span class="ident">name</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Unique identifier of this simple action.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def name(self) -&gt; Text:
+        return &#34;action_tareas_in_progress&#34;</code></pre>
+</details>
+</dd>
+<dt id="src.actions.ActionTareasInProgress.run"><code class="name flex">
+<span>def <span class="ident">run</span></span>(<span>self, dispatcher: rasa_sdk.executor.CollectingDispatcher, tracker: rasa_sdk.interfaces.Tracker, domain: Dict[str, Any]) ‑> List[Dict[str, Any]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Execute the side effects of this action.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dispatcher</code></strong></dt>
+<dd>the dispatcher which is used to
+send messages back to the user. Use
+<code>dispatcher.utter_message()</code> for sending messages.</dd>
+<dt><strong><code>tracker</code></strong></dt>
+<dd>the state tracker for the current
+user. You can access slot values using
+<code>tracker.get_slot(slot_name)</code>, the most recent user message
+is <code>tracker.latest_message.text</code> and any other
+<code>rasa_sdk.Tracker</code> property.</dd>
+<dt><strong><code>domain</code></strong></dt>
+<dd>the bot's domain</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A dictionary of <code>rasa_sdk.events.Event</code> instances that is
+returned through the endpoint</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def run(self, dispatcher: CollectingDispatcher,
+tracker: Tracker,
+domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+        coll = db.tareas
+        rta = &#34;&#34;
+        rta += &#34;Las tareas en estado in progress son:\n&#34;
+        for i in coll.find({&#34;estado&#34; : &#34;in_progress&#34;}):     
+                rta+=&#34;--Tarea: {}. Nombre {}.\n Descripcion: {}.\n Criterios de aceptacion: {}\n Participantes: {}\n&#34;.format(i[&#39;id_tarea&#39;],i[&#39;nombre&#39;], i[&#39;descripcion&#39;], i[&#39;criterios de aceptacion&#39;],i[&#39;participantes&#39;])
+        dispatcher.utter_message(text=rta)
+        return []</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="src.actions.ActionTareasToDo"><code class="flex name class">
+<span>class <span class="ident">ActionTareasToDo</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Next action to be taken in response to a dialogue state.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ActionTareasToDo(Action):
+
+        def name(self) -&gt; Text:
+                return &#34;action_tareas_to_do&#34;
+
+        def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+                coll = db.tareas
+                rta = &#34;&#34;
+                rta += &#34;Las tareas en estado to do son:\n&#34;
+                for i in coll.find({ &#34;estado&#34;: &#34;to_do&#34;}):       
+                        rta+=&#34;--Tarea: {}. Nombre {}.\n Descripcion: {}.\n Criterios de aceptacion: {}\n&#34;.format(i[&#39;id_tarea&#39;],i[&#39;nombre&#39;], i[&#39;descripcion&#39;], i[&#39;criterios de aceptacion&#39;])
+                rta += &#34;\nQuieres asignarte alguna tarea?&#34;
+                dispatcher.utter_message(text=rta)
+                return []</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>rasa_sdk.interfaces.Action</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="src.actions.ActionTareasToDo.name"><code class="name flex">
+<span>def <span class="ident">name</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Unique identifier of this simple action.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def name(self) -&gt; Text:
+        return &#34;action_tareas_to_do&#34;</code></pre>
+</details>
+</dd>
+<dt id="src.actions.ActionTareasToDo.run"><code class="name flex">
+<span>def <span class="ident">run</span></span>(<span>self, dispatcher: rasa_sdk.executor.CollectingDispatcher, tracker: rasa_sdk.interfaces.Tracker, domain: Dict[str, Any]) ‑> List[Dict[str, Any]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Execute the side effects of this action.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dispatcher</code></strong></dt>
+<dd>the dispatcher which is used to
+send messages back to the user. Use
+<code>dispatcher.utter_message()</code> for sending messages.</dd>
+<dt><strong><code>tracker</code></strong></dt>
+<dd>the state tracker for the current
+user. You can access slot values using
+<code>tracker.get_slot(slot_name)</code>, the most recent user message
+is <code>tracker.latest_message.text</code> and any other
+<code>rasa_sdk.Tracker</code> property.</dd>
+<dt><strong><code>domain</code></strong></dt>
+<dd>the bot's domain</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A dictionary of <code>rasa_sdk.events.Event</code> instances that is
+returned through the endpoint</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def run(self, dispatcher: CollectingDispatcher,
+tracker: Tracker,
+domain: Dict[Text, Any]) -&gt; List[Dict[Text, Any]]:
+        coll = db.tareas
+        rta = &#34;&#34;
+        rta += &#34;Las tareas en estado to do son:\n&#34;
+        for i in coll.find({ &#34;estado&#34;: &#34;to_do&#34;}):       
+                rta+=&#34;--Tarea: {}. Nombre {}.\n Descripcion: {}.\n Criterios de aceptacion: {}\n&#34;.format(i[&#39;id_tarea&#39;],i[&#39;nombre&#39;], i[&#39;descripcion&#39;], i[&#39;criterios de aceptacion&#39;])
+        rta += &#34;\nQuieres asignarte alguna tarea?&#34;
+        dispatcher.utter_message(text=rta)
+        return []</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="src" href="index.html">src</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="src.actions.ActionAsignarTarea" href="#src.actions.ActionAsignarTarea">ActionAsignarTarea</a></code></h4>
+<ul class="">
+<li><code><a title="src.actions.ActionAsignarTarea.name" href="#src.actions.ActionAsignarTarea.name">name</a></code></li>
+<li><code><a title="src.actions.ActionAsignarTarea.run" href="#src.actions.ActionAsignarTarea.run">run</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.actions.ActionEmpezarReunion" href="#src.actions.ActionEmpezarReunion">ActionEmpezarReunion</a></code></h4>
+<ul class="">
+<li><code><a title="src.actions.ActionEmpezarReunion.name" href="#src.actions.ActionEmpezarReunion.name">name</a></code></li>
+<li><code><a title="src.actions.ActionEmpezarReunion.run" href="#src.actions.ActionEmpezarReunion.run">run</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.actions.ActionMiTarea" href="#src.actions.ActionMiTarea">ActionMiTarea</a></code></h4>
+<ul class="">
+<li><code><a title="src.actions.ActionMiTarea.name" href="#src.actions.ActionMiTarea.name">name</a></code></li>
+<li><code><a title="src.actions.ActionMiTarea.run" href="#src.actions.ActionMiTarea.run">run</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.actions.ActionNuevaReunion" href="#src.actions.ActionNuevaReunion">ActionNuevaReunion</a></code></h4>
+<ul class="">
+<li><code><a title="src.actions.ActionNuevaReunion.name" href="#src.actions.ActionNuevaReunion.name">name</a></code></li>
+<li><code><a title="src.actions.ActionNuevaReunion.run" href="#src.actions.ActionNuevaReunion.run">run</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.actions.ActionNuevoSprint" href="#src.actions.ActionNuevoSprint">ActionNuevoSprint</a></code></h4>
+<ul class="">
+<li><code><a title="src.actions.ActionNuevoSprint.name" href="#src.actions.ActionNuevoSprint.name">name</a></code></li>
+<li><code><a title="src.actions.ActionNuevoSprint.run" href="#src.actions.ActionNuevoSprint.run">run</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.actions.ActionOnlineMembers" href="#src.actions.ActionOnlineMembers">ActionOnlineMembers</a></code></h4>
+<ul class="">
+<li><code><a title="src.actions.ActionOnlineMembers.name" href="#src.actions.ActionOnlineMembers.name">name</a></code></li>
+<li><code><a title="src.actions.ActionOnlineMembers.run" href="#src.actions.ActionOnlineMembers.run">run</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.actions.ActionOrganizacionActual" href="#src.actions.ActionOrganizacionActual">ActionOrganizacionActual</a></code></h4>
+<ul class="">
+<li><code><a title="src.actions.ActionOrganizacionActual.name" href="#src.actions.ActionOrganizacionActual.name">name</a></code></li>
+<li><code><a title="src.actions.ActionOrganizacionActual.run" href="#src.actions.ActionOrganizacionActual.run">run</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.actions.ActionProgramarDailys" href="#src.actions.ActionProgramarDailys">ActionProgramarDailys</a></code></h4>
+<ul class="">
+<li><code><a title="src.actions.ActionProgramarDailys.name" href="#src.actions.ActionProgramarDailys.name">name</a></code></li>
+<li><code><a title="src.actions.ActionProgramarDailys.run" href="#src.actions.ActionProgramarDailys.run">run</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.actions.ActionProgramarReuniones" href="#src.actions.ActionProgramarReuniones">ActionProgramarReuniones</a></code></h4>
+<ul class="">
+<li><code><a title="src.actions.ActionProgramarReuniones.name" href="#src.actions.ActionProgramarReuniones.name">name</a></code></li>
+<li><code><a title="src.actions.ActionProgramarReuniones.run" href="#src.actions.ActionProgramarReuniones.run">run</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.actions.ActionProximasReuniones" href="#src.actions.ActionProximasReuniones">ActionProximasReuniones</a></code></h4>
+<ul class="">
+<li><code><a title="src.actions.ActionProximasReuniones.name" href="#src.actions.ActionProximasReuniones.name">name</a></code></li>
+<li><code><a title="src.actions.ActionProximasReuniones.run" href="#src.actions.ActionProximasReuniones.run">run</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.actions.ActionSprintActual" href="#src.actions.ActionSprintActual">ActionSprintActual</a></code></h4>
+<ul class="">
+<li><code><a title="src.actions.ActionSprintActual.name" href="#src.actions.ActionSprintActual.name">name</a></code></li>
+<li><code><a title="src.actions.ActionSprintActual.run" href="#src.actions.ActionSprintActual.run">run</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.actions.ActionTareasDone" href="#src.actions.ActionTareasDone">ActionTareasDone</a></code></h4>
+<ul class="">
+<li><code><a title="src.actions.ActionTareasDone.name" href="#src.actions.ActionTareasDone.name">name</a></code></li>
+<li><code><a title="src.actions.ActionTareasDone.run" href="#src.actions.ActionTareasDone.run">run</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.actions.ActionTareasInProgress" href="#src.actions.ActionTareasInProgress">ActionTareasInProgress</a></code></h4>
+<ul class="">
+<li><code><a title="src.actions.ActionTareasInProgress.name" href="#src.actions.ActionTareasInProgress.name">name</a></code></li>
+<li><code><a title="src.actions.ActionTareasInProgress.run" href="#src.actions.ActionTareasInProgress.run">run</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.actions.ActionTareasToDo" href="#src.actions.ActionTareasToDo">ActionTareasToDo</a></code></h4>
+<ul class="">
+<li><code><a title="src.actions.ActionTareasToDo.name" href="#src.actions.ActionTareasToDo.name">name</a></code></li>
+<li><code><a title="src.actions.ActionTareasToDo.run" href="#src.actions.ActionTareasToDo.run">run</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>
